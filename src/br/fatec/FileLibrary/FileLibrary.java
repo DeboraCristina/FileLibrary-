@@ -11,7 +11,10 @@ public class FileLibrary implements I_FileLibrary
 
     public FileLibrary(String srcFilePath)
     {
+        String os = System.getProperty("os.name").toLowerCase();
         this.sysSeparator = File.separator;
+        if (os.contains("windows"))
+            sysSeparator = "\\";
         this.defaultFilePath = srcFilePath;
         this.defaultPath = getPath(srcFilePath);
         this.defaultFile = getFile(srcFilePath);
